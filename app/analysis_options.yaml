@@ -1,0 +1,23 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    avoid_print: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    use_super_parameters: true
+
+analyzer:
+  errors:
+    # Flutter 3.50 marca material.dart como deprecado a favor de material_ui,
+    # paquete que aún no viene incluido en el SDK. Se mantiene la API estable.
+    deprecated_member_use: ignore
+  exclude:
+    - build/**
+    - .dart_tool/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
