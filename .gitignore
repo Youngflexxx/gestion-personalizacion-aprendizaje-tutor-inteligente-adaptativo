@@ -1,0 +1,62 @@
+# ===== Flutter / Dart =====
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+*.g.dart
+*.freezed.dart
+app/android/local.properties
+app/ios/Flutter/Generated.xcconfig
+app/ios/Flutter/flutter_export_environment.sh
+app/ios/Pods/
+app/macos/Pods/
+app/macos/Flutter/ephemeral/
+app/windows/flutter/ephemeral/
+app/linux/flutter/ephemeral/
+app/web/flutter_service_worker.js.map
+*.iml
+*.ipr
+*.iws
+
+# ===== Docker =====
+database/data/
+**/pgdata/
+*.pid
+
+# ===== Entorno, secretos y credenciales =====
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+secrets.*
+credentials*.json
+service-account*.json
+
+# ===== IDEs y temporales =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+tmp/
+temp/
+
+# ===== Herramientas de agentes y artefactos generados =====
+.agents/
+digest.txt
