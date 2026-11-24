@@ -50,7 +50,7 @@ Para reejecutar desde cero: `docker compose down -v && docker compose up -d`.
 Verificación rápida:
 
 ```bash
-docker compose exec db psql -U postgres -d tutor_adaptativo_sabd -c "SELECT * FROM vw_kpi_aula;"
+docker compose exec postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT * FROM vw_kpi_aula;"'
 ```
 
 ## Aplicación Flutter
