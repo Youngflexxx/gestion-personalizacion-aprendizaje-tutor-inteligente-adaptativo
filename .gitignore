@@ -57,6 +57,13 @@ desktop.ini
 tmp/
 temp/
 
+# ===== Lanzador de escritorio (PyInstaller) =====
+tools/launcher/config.json
+tools/launcher/dist/
+tools/launcher/*.spec
+__pycache__/
+*.pyc
+
 # ===== Herramientas de agentes y artefactos generados =====
 .agents/
 digest.txt

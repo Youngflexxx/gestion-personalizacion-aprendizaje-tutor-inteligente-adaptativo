@@ -1,0 +1,7 @@
+{
+  "pg_bin": "",
+  "pg_data": "",
+  "pg_port": 55432,
+  "web_port": 8080,
+  "flutter_bin": ""
+}

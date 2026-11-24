@@ -33,26 +33,15 @@ Tutor de micro-aprendizaje gamificado (estilo Duolingo) para la materia SABD. Un
     └── test/                  # Pruebas unitarias y de widget
 ```
 
-## Base de datos
+## Inicio rápido (lanzador de escritorio, sin Docker)
 
-Requisitos: Docker Desktop (recomendado) o PostgreSQL 16 local.
+1. Ejecuta `tools\launcher\dist\TutorAdaptativoSABD.exe`.
+2. Pulsa **Iniciar todo**: arranca PostgreSQL, crea la base con sus scripts la primera vez, levanta la aplicación y abre el navegador en `http://localhost:8080`.
+3. Pulsa **Detener todo** al terminar.
 
-```bash
-cd database
-cp .env.example .env          # Ajusta la contraseña local; .env no se versiona
-docker compose up -d
-```
+Detalles, requisitos y cómo generar el ejecutable en [`tools/launcher/README.md`](tools/launcher/README.md).
 
-Docker ejecuta automáticamente `01_schema.sql`, `02_views.sql` y `03_seed.sql` la primera vez que se crea el volumen (`/docker-entrypoint-initdb.d`).
-
-Para reejecutar desde cero: `docker compose down -v && docker compose up -d`.
-
-Verificación rápida:
-
-```bash
-docker compose exec postgres sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT * FROM vw_kpi_aula;"'
-```
-
+Docker sigue disponible en `database/docker-compose.yml` como alternativa opcional.
 ## Aplicación Flutter
 
 Requisitos: Flutter SDK 3.27 o superior (probado con Flutter 3.50.1 / Dart 3.14).
