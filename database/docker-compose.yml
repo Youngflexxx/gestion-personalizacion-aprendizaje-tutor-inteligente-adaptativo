@@ -1,0 +1,35 @@
+name: tutor_adaptativo_sabd
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tutor_adaptativo_sabd_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tutor_adaptativo_sabd}
+      POSTGRES_USER: ${POSTGRES_USER:-sabd_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me_in_env}
+      TZ: ${TZ:-UTC}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - sabd_pgdata:/var/lib/postgresql/data
+      # Los scripts se ejecutan una sola vez, en orden alfabético, cuando el
+      # volumen de datos está vacío (primer arranque del contenedor).
+      - ./01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./02_views.sql:/docker-entrypoint-initdb.d/02_views.sql:ro
+      - ./03_seed.sql:/docker-entrypoint-initdb.d/03_seed.sql:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-sabd_admin} -d ${POSTGRES_DB:-tutor_adaptativo_sabd}",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  sabd_pgdata:
+    name: tutor_adaptativo_sabd_pgdata
